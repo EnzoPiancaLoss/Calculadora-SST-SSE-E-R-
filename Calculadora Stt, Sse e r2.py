@@ -1,7 +1,6 @@
 import math
 
 def exportar_para_txt(texto, nome_arquivo):
-    #texto = "Esta é a string que você quer exportar para o bloco de notas."
 
     with open(nome_arquivo, "w") as arquivo:
         arquivo.write(texto)
