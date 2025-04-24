@@ -24,7 +24,8 @@ def Media(Array):
     pass
 
 def CalcularSEE(ArrValores, ArrPrevisao):
-    
+
+    #Apenas para evitar erros, caso aconteça, o scirpt para de executar
     if len(ArrValores) != len(ArrPrevisao):
         return "Error"
 
