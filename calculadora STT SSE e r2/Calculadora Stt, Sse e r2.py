@@ -1,8 +1,6 @@
 import math
 
 def exportar_para_txt(texto, nome_arquivo):
-    #texto = "Esta é a string que você quer exportar para o bloco de notas."
-
     with open(nome_arquivo, "w") as arquivo:
         arquivo.write(texto)
 
@@ -74,6 +72,8 @@ def Rquadrado(SST,SSE):
     return 1 - (SSE/SST)
     pass
 
+
+
 def main():
     ##########################
     print("Hora de inserir as informações :)")
@@ -100,7 +100,7 @@ def main():
 
     RMinecraft = Rquadrado(Sst,Sse)
 
-
+    
 
     # print("#Valores: ", valores)
     # print("#Previsão: ", previsao)

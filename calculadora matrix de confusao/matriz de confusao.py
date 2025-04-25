@@ -11,6 +11,12 @@
 # FN: O item é positivo, e o sistema diz que é negativo
 # FP: O item é negativo, e o sistema diz que é positivo
 
+def CalcularF1Score(Sen,Esp):
+    Sen = float(Sen)
+    Esp = float(Esp)
+    return 2 * ((Sen * Esp) / (Sen + Esp))
+
+
 def exportar_para_txt(texto, nome_arquivo):
 
     with open(nome_arquivo, "w") as arquivo:
@@ -44,6 +50,8 @@ def Acuracia(tp,tn,fp,fn):
     return (tp + tn) / returnTotal([tp,tn,fp,fn])
     pass
 
+
+
 def calculo(TrueN, FalseP, FalseN, TrueP):
     
     #Em codigo é diferente a posição
@@ -57,8 +65,14 @@ def calculo(TrueN, FalseP, FalseN, TrueP):
         Previsao_Positivo
     ]
 
-    sen = converterParaPorcentagem(Sensitividade(TrueP,FalseN)) 
-    esp = converterParaPorcentagem(Especifidade(TrueN,FalseP))
+    sen = Sensitividade(TrueP,FalseN)
+    esp = Especifidade(TrueN,FalseP)
+    
+    f1score = converterParaPorcentagem(CalcularF1Score(sen,esp))
+
+    sen = converterParaPorcentagem(sen)
+    esp = converterParaPorcentagem(esp)
+
     Acc = converterParaPorcentagem(Acuracia(TrueP,TrueN,FalseP,FalseN))
 
     String_output = "\nCalculando....\n"
@@ -74,6 +88,7 @@ def calculo(TrueN, FalseP, FalseN, TrueP):
     String_output += "Sensitividade: " + str(sen) + "\n"
     String_output += "Especifidade: " + str(esp) + "\n"
     String_output += "Acuracia: " + str(Acc) + "\n"
+    String_output += "F1Score: " + str(f1score) + "\n"
     print(String_output)
     exportar_para_txt(String_output, "Resultados matriz.txt")
     pass
